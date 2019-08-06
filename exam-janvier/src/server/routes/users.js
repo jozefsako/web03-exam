@@ -5,6 +5,7 @@ const db = require('../modules/db.js');
 /* GET home page. */
 router.get('/me', function (req, res, next) {
     db.db.collection('users').findOne().then((user) => {
+        console.log(user);
         res.json(user);
     }).catch((err) => {
         res.status(500).send(err);

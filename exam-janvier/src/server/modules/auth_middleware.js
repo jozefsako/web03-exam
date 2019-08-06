@@ -5,7 +5,7 @@
  4° CALL next() WHEN JOB IS DONE
 */
 
-const authMiddleware = () => { 
+const authMiddleware = (store) => (next) => (action) => {
     console.log("je suis dans le middleware");
 }
 

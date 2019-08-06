@@ -19,7 +19,7 @@ router.get('/:id', function (req, res, next) {
     });
 });
 
-router.delete('/:id', function (req, res, next) {
+router.put('/delete/:id', function (req, res, next) {
     db.db.collection('tasks').findOneAndDelete({ _id: new db.ObjectID(req.params.id) }).then((result) => {
         res.json(result.value);
     }).catch((err) => {
@@ -28,9 +28,9 @@ router.delete('/:id', function (req, res, next) {
 });
 
 router.post('/', function (req, res, next) {
-    db.db.collection('tasks').insertOne(req.label).then((result) => {
-        req.label._id = result.insertedId;
-        res.json(req.label);
+    db.db.collection('tasks').insertOne(req.body).then((result) => {
+        req.body._id = result.insertedId;
+        res.json(req.body);
     }).catch((err) => {
         res.status(500).send(err);
     })

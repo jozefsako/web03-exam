@@ -1,11 +1,8 @@
-import React from 'react';
-import { Nav, Navbar, Form } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
-
-
+import React from "react";
+import { Nav, Navbar, Form } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 //CHANGE WHAT MUST BE CHANGED TO HANDLE FAKE AUTHENTICATION
-
 
 class NavigationClassComponent extends React.Component {
   constructor(props) {
@@ -16,24 +13,33 @@ class NavigationClassComponent extends React.Component {
     this.toggleAuthentication = this.toggleAuthentication.bind(this);
   }
 
-  isAuthentified(event) {
+  isAuthentified() {
     console.log("isAuthentified => " + this.state.isAuthentified);
-    localStorage.setItem('isAuthentified', this.state.isAuthentified);
+    localStorage.setItem("isAuthentified", this.state.isAuthentified);
     return this.state.isAuthentified;
   }
 
-  toggleAuthentication(event) {
+  toggleAuthentication() {
     this.setState({ isAuthentified: !this.state.isAuthentified });
-    localStorage.setItem('isAuthentified', !this.state.isAuthentified);
+    localStorage.setItem("isAuthentified", !this.state.isAuthentified);
   }
 
   render() {
     return (
       <Navbar bg="dark" variant="dark">
-        <Navbar.Brand as={Link} to="/">Navbar</Navbar.Brand>
+        <Navbar.Brand as={Link} to="/">
+          Navbar
+        </Navbar.Brand>
         <Nav className="mr-auto">
-          <Nav.Link as={Link} to="/" >Dashboard</Nav.Link>
-          <Nav.Link as={Link} to="/tasks" >Tasks</Nav.Link>
+          <Nav.Link as={Link} to="/">
+            Dashboard
+          </Nav.Link>
+          <Nav.Link as={Link} to="/tasks">
+            Tasks
+          </Nav.Link>
+          <Nav.Link as={Link} to="/addTask">
+            Add
+          </Nav.Link>
         </Nav>
         {/* ADD HERE A CHECKBOX TO TOGGLE AUTHENTICATION ON/OFF*/}
         <Form.Check
@@ -45,7 +51,6 @@ class NavigationClassComponent extends React.Component {
       </Navbar>
     );
   }
-
 }
 
 export default NavigationClassComponent;
