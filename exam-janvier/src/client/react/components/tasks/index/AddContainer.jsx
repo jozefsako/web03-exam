@@ -1,7 +1,7 @@
 import React from "react";
 import Component from "./component.jsx";
 import { Container, Form, Button, Row, Col } from "react-bootstrap";
-import sendApirequest from "../../../utils/api.js";
+import service from "../../../services/tasks.js";
 
 class AddContainer extends React.Component {
   constructor(props) {
@@ -17,24 +17,8 @@ class AddContainer extends React.Component {
   }
 
   handleSubmit(event) {
-    alert("Votre tâche ( " + this.state.content + " )a bien été ajoutée");
     event.preventDefault();
-
-    var obj = {
-      content: this.state.content
-    };
-
-    sendApirequest({
-      url: "/api/tasks",
-      method: "POST",
-      params: obj
-    })
-      .then(res => {
-        console.log(res);
-      })
-      .catch(err => {
-        console.log(err);
-      });
+    service.create(this.state.content);
   }
 
   render() {

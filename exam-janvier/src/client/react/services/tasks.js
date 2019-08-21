@@ -2,36 +2,23 @@ import sendApirequest from "../utils/api.js";
 
 const create = ({ label }) => {
     console.log("create()");
+    console.log("label=> " + label);
+    return sendApirequest({
+        url: "/api/tasks",
+        method: "POST",
+        params: label
+    })
 }
 
 const retrieve = (id) => {
     console.log("retrieve()");
     const url = `/api/tasks/${id}`
-    sendApirequest({
-        url,
-        method: "GET",
-    })
-        .then((res) => {
-            console.log(res);
-            return res;
-        })
-        .catch((err) => {
-            console.log(err);
-            return err;
-        });
+    return sendApirequest({ url });
 }
 
 const retrieveAll = () => {
     console.log("retrieveAll()");
-    sendApirequest({ url: "/api/tasks" })
-        .then((res) => {
-            localStorage.setItem("tasks", res);
-            return res;
-        })
-        .catch((err) => {
-            console.log(err);
-            localStorage.setItem("tasks", []);
-        })
+    return sendApirequest({ url: "/api/tasks" });
 }
 
 const update = ({ id, label }) => {
@@ -40,11 +27,10 @@ const update = ({ id, label }) => {
 
 const destroy = (id) => {
     console.log("destroy()");
-    const url = `/api/tasks/${id}`
-    sendApirequest({
-        url,
-        method: "DELETE",
-    })
+    return sendApirequest({
+        url: "/api/tasks/delete/" + id,
+        method: "PUT"
+    });
 }
 
 const service = {

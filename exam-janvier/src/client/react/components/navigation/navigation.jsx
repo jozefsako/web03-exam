@@ -14,7 +14,6 @@ class NavigationClassComponent extends React.Component {
   }
 
   isAuthentified() {
-    console.log("isAuthentified => " + this.state.isAuthentified);
     localStorage.setItem("isAuthentified", this.state.isAuthentified);
     return this.state.isAuthentified;
   }

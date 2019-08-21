@@ -5,13 +5,13 @@ class DashboardClassComponent extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      user: "",
-      connected: false
     };
   }
 
   render() {
-    return <Alert variant="info">Hello !</Alert>;
+    return (
+      <Alert variant="info">Hello ! {localStorage.getItem("user")} </Alert>
+    );
   }
 }
 

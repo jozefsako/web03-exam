@@ -10,13 +10,14 @@ const Component = ({ tasks, handleDelete }) => {
           <ListGroup.Item as="li" action key={task._id}>
             {task.content}
             <Button
-              onClick={()=> handleDelete(task._id)}
+              onClick={() => handleDelete(task._id)}
               variant="primary"
               type="submit"
+              size="sm"
               style={{ float: "right" }}
-            >
-              Delete
-            </Button>
+            >Delete</Button>
+
+
           </ListGroup.Item>
         ))}
       </Form>

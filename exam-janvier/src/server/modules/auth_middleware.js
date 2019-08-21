@@ -5,9 +5,28 @@
  4° CALL next() WHEN JOB IS DONE
 */
 
-const authMiddleware = (store) => (next) => (action) => {
-    console.log("je suis dans le middleware");
-}
+const authMiddleware = () => {
 
+    console.log("MIDDLEWARE");
+    console.log(localStorage.getItem('isAuthentified'));
+    console.log(localStorage.getItem("user"));
+
+    if (localStorage.getItem('isAuthentified') === true) {
+        if (localStorage.getItem('user') === null) {
+            fetch("/api/users/me")
+                .then(response => {
+                    return response.json();
+                })
+                .then(currentUser => {
+                    localStorage.setItem("user", currentUser.firstName);
+                })
+                .catch(error => {
+                    console.error(error);
+                });
+        }
+    } else {
+        localStorage.removeItem('user');
+    }
+}
 
 module.exports = authMiddleware;
