@@ -18,7 +18,13 @@ class AddContainer extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    service.create(this.state.content);
+    console.log("handleSubmit() => " + this.state.content);
+    service
+      .create({ label: this.state.content })
+      .then(() => console.log("normalement c'est envoyé "))
+      .catch(err => {
+        console.log(err);
+      });
   }
 
   render() {

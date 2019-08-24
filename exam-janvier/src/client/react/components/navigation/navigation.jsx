@@ -19,8 +19,9 @@ class NavigationClassComponent extends React.Component {
   }
 
   toggleAuthentication() {
-    this.setState({ isAuthentified: !this.state.isAuthentified });
-    localStorage.setItem("isAuthentified", !this.state.isAuthentified);
+    let reversedState = !this.state.isAuthentified;
+    this.setState({ isAuthentified: reversedState });
+    localStorage.setItem("isAuthentified", reversedState);
   }
 
   render() {

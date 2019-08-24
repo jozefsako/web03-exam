@@ -2,11 +2,12 @@ import sendApirequest from "../utils/api.js";
 
 const create = ({ label }) => {
     console.log("create()");
-    console.log("label=> " + label);
+    console.log("label => " + label);
+    let obj = { content : label };
     return sendApirequest({
         url: "/api/tasks",
         method: "POST",
-        params: label
+        params: obj,
     })
 }
 
